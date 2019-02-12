@@ -44,14 +44,13 @@ pipeline {
     }
     stage('Force Fargate Deploy') {
       steps{
-          aws ecs update-service --cluster demoappcluster --service fargate-demoapp_service --force-new-deployment
+          sh 'aws ecs update-service --cluster demoappcluster --service fargate-demoapp_service --force-new-deployment'
       }
     }
     stage('Remove Unused docker image') {
       steps{
         sh "docker rmi $registry:$BUILD_NUMBER"
-        sh "aws ecs update-service --cluster demoappcluster --service fargate-demoapp_service --force-new-deployment"
-      }
+       }
     }
   }
 }
