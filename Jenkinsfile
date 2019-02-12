@@ -42,11 +42,6 @@ pipeline {
         }
       }
     }
-    stage('Force Fargate Deploy') {
-      steps{
-         //sh "/home/root1/.local/bin/aws ecs update-service --cluster demoappcluster --service fargate-demoapp_service --force-new-deployment"
-      }
-    }
     stage('Remove Unused docker image') {
       steps{
         sh "docker rmi $registry:$BUILD_NUMBER"
