@@ -44,7 +44,7 @@ pipeline {
     }
     stage('Force Fargate Deploy') {
       steps{
-          sh label: '', script: 'aws ecs update-service --cluster demoappcluster --service fargate-demoapp_service --force-new-deployment'
+          sh label: '', script: '/home/root1/.local/bin/aws ecs update-service --cluster demoappcluster --service fargate-demoapp_service --force-new-deployment'
       }
     }
     stage('Remove Unused docker image') {
